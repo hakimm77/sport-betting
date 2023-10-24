@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-const PORT = 3000;
+const PORT = process.env.PORT || 4000;
 const liveApiUrl =
   "https://api.americanwagering.com/regions/us/locations/co/brands/czr/sb/v3/sports/americanfootball/events/in-play/?competitionId=b7eda1b3-0170-4510-9616-1bce561d7aa7";
 const scheduledApiUrl =

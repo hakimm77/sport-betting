@@ -10,3 +10,7 @@ node_modules/
 # Ignore build artifacts
 build/
 dist/
+
+# Local Netlify folder
+.netlify
+.vercel

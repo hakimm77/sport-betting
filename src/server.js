@@ -1,6 +1,6 @@
-import express from "express";
-import axios from "axios";
-import cors from "cors";
+const express = require("express");
+const axios = require("axios");
+const cors = require("cors");
 
 const app = express();
 app.use(cors());
@@ -24,14 +24,14 @@ app.get("/test", async (req, res) => {
     })
     .then((response) => {
       const data = response.data;
-      let responseObj: any = { data: [] };
+      let responseObj = { data: [] };
       const ncaafEvents = data?.competitions?.[0]?.events;
 
       if (!ncaafEvents) {
         return res.status(500).json({ error: "No live games now" });
       }
 
-      ncaafEvents.forEach((event: any) => {
+      ncaafEvents.forEach((event) => {
         const gameID = event.id;
         const isLive = event.active && event.started;
         const league = event.competitionName;
@@ -39,7 +39,7 @@ app.get("/test", async (req, res) => {
         const sportsbook = "Caesars";
         const timestamp = new Date(event.startTime).getTime();
 
-        event.markets?.forEach((market: any) => {
+        event.markets?.forEach((market) => {
           if (market.selections && market.selections.length > 0) {
             const selectionName = market.selections[0].name?.trim();
             const betName = `${selectionName} ${market.line}`;
